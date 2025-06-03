@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local-Global Variables</title>
+    <script>
+        var a = 10;        //hold the value
+        function local(num1,num2){  // 10 + ''
+            var x=20;
+            var result=num1+num2;
+            console.log("Local Variable x = ",x);
+            console.log("result = ", result);
+        }
+        local(10);
+        //console.log("Local Variable x: ",x);
+        console.log("Global variable a: ",a);
+    </script>
+</head>
+<body>
+    <h1>Local and Global Variables</h1>
+</body>
+</html>
