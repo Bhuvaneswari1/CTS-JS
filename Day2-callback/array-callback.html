@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Array Callback</title>
+</head>
+<body>
+    <h2>Filter Array Callaback</h2>
+    <script>
+        function filterArray(arr,callback){
+            let result = [];
+            for(let item of arr){
+                if(callback(item)){
+                    result.push(item);
+                }
+            }
+            return result;
+            //console.log("Even numbers: ",result);
+        }
+        const numbers = [1,4,7,10,15];
+
+        const isEven = num => num%2 === 0;
+        //filterArray(numbers,isEven);
+        console.log("Even numbers: ",filterArray(numbers,isEven));
+    </script>
+</body>
+</html>
+
+<!-- Goal: Check if all elements in an array pass a custom test.
+Lets assume custom test > 75
+Display the scores which is greater than 75
+scores = [85, 92, 72, 90, 65]; -->

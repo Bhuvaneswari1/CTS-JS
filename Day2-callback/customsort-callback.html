@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Sorting with Callback</title>
+</head>
+
+<body>
+    <h1>Custom Sorting with Callback</h1>
+    <script>
+        const users = [
+            { name: "Bob", age: 25 },
+            { name: "Alice", age: 30 },
+            { name: "Charlie", age: 35 }
+        ];
+
+        function sortBy(array, callback) {
+            return [...array].sort(callback);
+        }
+
+        // Sort by age
+        const sortedByAge = sortBy(users, (a, b) => a.age - b.age);
+        console.log("Sorted by Age:", sortedByAge);
+
+        // Sort by name
+        const sortedByName = sortBy(users, (a, b) => a.name.localeCompare(b.name));
+        console.log("Sorted by Name:", sortedByName);
+
+        /*
+        {name:"Bob",age:25},
+        {name:"John",age:30},
+        {name:"Charlie",age:35}
+
+        (a, b) => a.age - b.age:
+        This is a comparison function:
+
+        If the result is negative → a comes before b
+        If zero → order remains
+        If positive → b comes before a
+
+        Anish, Anil
+        */
+    </script>
+</body>
+
+</html>

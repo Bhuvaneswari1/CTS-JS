@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch JSON example</title>
+</head>
+<body>
+    <h1>User List</h1>
+    <ul id="userList">Loading...</ul>
+    <script>
+        async function fetchJSON(url,callback){
+            /*
+            fetch(url)
+            .then(response=>response.json()) //Parse JSON reponse
+            .then(data => callback(data)) //call the callback with the data
+            .catch(error=>{
+                console.error('Error fetchning JSON: ',error);
+                document.getElementById('userList').innerHTML="Failed to load user data";
+            }) */
+             try{
+                const response = await fetch(url); //wait for the fetch
+                const data = await response.json();
+                callback(data);
+             }
+             catch(error){
+                console.error('Error fetchning JSON: ',error);
+                document.getElementById('userList').innerHTML="Failed to load user data";
+             }
+
+        }
+
+        function handleData(data){
+            const userList = document.getElementById("userList");
+            userList.innerHTML=''; //clear loading text
+
+            data.users.forEach(user=>{
+                const li = document.createElement("li");
+                li.textContent = `ID: ${user.id}, Name: ${user.name}, 
+                Email: ${user.email}, Role: ${user.role}`;
+                userList.appendChild(li);
+            })
+        }
+
+        fetchJSON('data.json',handleData)
+    </script>
+</body>
+</html>
